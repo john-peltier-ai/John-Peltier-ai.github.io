@@ -1,0 +1,46 @@
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: #0b0c10;
+color: #ffffff;
+}
+
+.container {
+width: 90%;
+max-width: 900px;
+margin: auto;
+}
+
+.nav {
+padding: 20px;
+background: #111;
+}
+
+.hero {
+padding: 80px 0;
+background: #161b22;
+}
+
+.section {
+padding: 60px 0;
+}
+
+.section.dark {
+background: #0f1117;
+}
+
+.btn {
+display: inline-block;
+margin-top: 20px;
+padding: 12px 20px;
+background: white;
+color: black;
+text-decoration: none;
+border-radius: 6px;
+}
+
+.footer {
+padding: 30px 0;
+text-align: center;
+background: #111;
+}
