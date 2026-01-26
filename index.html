@@ -175,6 +175,30 @@ opacity:.9;
 .step{grid-column: span 12}
 .hero h1{font-size: 32px}
 }
+
+ /* --- Clarity Scan (add-on) --- */
+  .scan-wrap{ margin-top: 22px; border:1px solid var(--line); border-radius: calc(var(--radius) + 6px);
+    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
+    box-shadow: var(--shadow); padding: 18px; }
+  .scan-grid{ display:grid; grid-template-columns: repeat(12,1fr); gap: 12px; margin-top: 12px; }
+  .scan-field{ grid-column: span 6; }
+  .scan-field label{ display:block; font-size:12px; color: var(--muted); margin: 0 0 6px; }
+  .scan-field select, .scan-field input, .scan-field textarea{
+    width:100%; padding: 10px 11px; border-radius: 12px;
+    border:1px solid var(--line); background: rgba(255,255,255,.03);
+    color: var(--text); outline:none;
+  }
+  .scan-field textarea{ min-height: 92px; resize: vertical; }
+  .scan-field.full{ grid-column: span 12; }
+  .scan-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+  .scan-results{ margin-top: 14px; border:1px dashed var(--line); border-radius: var(--radius);
+    padding: 12px; background: rgba(0,0,0,.12); }
+  .scan-results pre{
+    margin:0; white-space:pre-wrap; word-break:break-word;
+    font-size: 12.5px; color: var(--text);
+  }
+  .hint{ color: var(--muted); font-size:12px; margin-top: 8px; }
+  @media (max-width: 760px){ .scan-field{ grid-column: span 12; } }
 </style>
 </head>
 
@@ -211,7 +235,7 @@ opacity:.9;
     <div class="actions">
       <a class="btn primary" href="https://calendly.com/YOUR-LINK-HERE">Book a short intro call</a>
       <a class="btn" href="#services">See services</a>
-      <a class="btn" href="mailto:youremail@example.com">Email</a>
+      <a class="btn" href="mailto:johnpeltier@gmail.com">Email</a>
     </div>
   </div>
 </section>
@@ -307,6 +331,98 @@ opacity:.9;
 </div>
 </section>
 
+<section id="scan" class="section">
+  <h2>60-second Product Clarity Scan</h2>
+  <p class="sub">
+    No accounts. No uploads. Runs in your browser. Answer a few questions and get a clear “what to do next” summary.
+  </p>
+
+  <div class="scan-wrap">
+    <div class="scan-grid">
+      <div class="scan-field">
+        <label for="teamSize">Team size</label>
+        <select id="teamSize">
+          <option value="1-5">1–5</option>
+          <option value="6-15">6–15</option>
+          <option value="16-25">16–25</option>
+          <option value="26-40">26–40</option>
+          <option value="41-80">41–80</option>
+          <option value="80+">80+</option>
+        </select>
+      </div>
+
+      <div class="scan-field">
+        <label for="stage">Company stage</label>
+        <select id="stage">
+          <option value="pre-revenue">Pre-revenue</option>
+          <option value="early-revenue">Early revenue</option>
+          <option value="scaling">Scaling (repeatable GTM)</option>
+        </select>
+      </div>
+
+      <div class="scan-field">
+        <label for="pain">What’s your biggest bottleneck right now?</label>
+        <select id="pain">
+          <option value="too-many-ideas">Too many ideas / unsure what matters now</option>
+          <option value="priority-churn">Priority churn / roadmap debates</option>
+          <option value="slow-shipping">Slow shipping / unclear requirements</option>
+          <option value="launch-risk">Launch risk / GTM not ready</option>
+          <option value="customer-signal">Customer signal is messy / anecdotal</option>
+        </select>
+      </div>
+
+      <div class="scan-field">
+        <label for="goal">Primary goal for the next 60 days</label>
+        <select id="goal">
+          <option value="new-revenue">New revenue / pipeline conversion</option>
+          <option value="retention">Retention / activation / onboarding</option>
+          <option value="reliability">Reliability / risk reduction</option>
+          <option value="speed">Shipping velocity / throughput</option>
+          <option value="positioning">Positioning / messaging / GTM clarity</option>
+        </select>
+      </div>
+
+      <div class="scan-field">
+        <label for="cadence">Do you have a consistent shipping cadence?</label>
+        <select id="cadence">
+          <option value="weekly">Yes — at least weekly</option>
+          <option value="sometimes">Sometimes / inconsistent</option>
+          <option value="rarely">Rarely</option>
+        </select>
+      </div>
+
+      <div class="scan-field">
+        <label for="ownership">Who owns prioritization today?</label>
+        <select id="ownership">
+          <option value="founder">Founder</option>
+          <option value="pm">PM</option>
+          <option value="eng">Engineering lead</option>
+          <option value="committee">Committee / “everyone”</option>
+          <option value="unclear">Unclear</option>
+        </select>
+      </div>
+
+      <div class="scan-field full">
+        <label for="notes">One sentence: what decision are you stuck on?</label>
+        <textarea id="notes" placeholder="Example: We can’t decide whether to build SSO, SOC2 automation, or the next feature customers keep asking for."></textarea>
+      </div>
+    </div>
+
+    <div class="scan-actions">
+      <button class="btn primary" type="button" id="runScanBtn">Run scan</button>
+      <button class="btn" type="button" id="copyBtn" disabled>Copy results</button>
+      <a class="btn" id="emailBtn" href="#" aria-disabled="true">Email results</a>
+    </div>
+
+    <div class="hint">Tip: “Email results” opens your mail app with the scan filled in. “Copy results” puts it on your clipboard.</div>
+
+    <div class="scan-results" id="resultsBox" style="display:none;">
+      <pre id="resultsText"></pre>
+    </div>
+  </div>
+</section>
+
+  
 <section id="contact" class="cta">
 <h2>Start with a short conversation</h2>
 <p>
@@ -324,5 +440,183 @@ a quick intro call is the fastest way to see if this fits.
 <div>Remote-friendly • US-based • Founder-first execution</div>
 </div>
 </div>
+
+  <script>
+  (function(){
+    const el = (id) => document.getElementById(id);
+
+    const teamSize = el('teamSize');
+    const stage = el('stage');
+    const pain = el('pain');
+    const goal = el('goal');
+    const cadence = el('cadence');
+    const ownership = el('ownership');
+    const notes = el('notes');
+
+    const runBtn = el('runScanBtn');
+    const copyBtn = el('copyBtn');
+    const emailBtn = el('emailBtn');
+
+    const resultsBox = el('resultsBox');
+    const resultsText = el('resultsText');
+
+    const YOUR_EMAIL = "youremail@example.com"; // <-- CHANGE THIS
+
+    function inferSegment(teamSizeVal){
+      // Rough segmentation: 1–25 vs 30+ (with a soft bridge range)
+      if (teamSizeVal === '1-5' || teamSizeVal === '6-15' || teamSizeVal === '16-25') return '1–25 headcount (Founder-aligned, execution-unclear)';
+      if (teamSizeVal === '26-40') return '30+ headcount (Growing team; alignment risk emerging)';
+      return '30+ headcount (Execution-heavy; alignment + prioritization needed)';
+    }
+
+    function scoreRisk(){
+      let risk = 0;
+
+      // Cadence risk
+      if (cadence.value === 'sometimes') risk += 2;
+      if (cadence.value === 'rarely') risk += 4;
+
+      // Ownership risk
+      if (ownership.value === 'committee') risk += 4;
+      if (ownership.value === 'unclear') risk += 3;
+
+      // Pain-driven risk
+      if (pain.value === 'priority-churn') risk += 3;
+      if (pain.value === 'slow-shipping') risk += 2;
+      if (pain.value === 'launch-risk') risk += 2;
+      if (pain.value === 'customer-signal') risk += 1;
+
+      // Stage tweaks
+      if (stage.value === 'scaling') risk += 1;
+
+      return Math.min(10, risk);
+    }
+
+    function topRecommendations(segment, risk){
+      const recs = [];
+
+      // Segment-specific primary
+      if (segment.startsWith('1–25')){
+        recs.push("Run an idea triage: filter the next 10 ideas through revenue / retention / risk + effort, then lock a 30–60 day plan.");
+        recs.push("Define ‘done’ for the next 3 deliverables (acceptance criteria + edge cases) to reduce rework.");
+      } else {
+        recs.push("Establish lightweight prioritization and decision ownership (one owner + explicit tradeoffs).");
+        recs.push("Create a 90-day ‘now / next / later’ roadmap tied to outcomes (not dates) and review weekly.");
+      }
+
+      // Risk-based add-ons
+      if (risk >= 7){
+        recs.push("Fix cadence: weekly grooming + a single weekly decision agenda (what changes, what slips, why).");
+      } else if (risk >= 4){
+        recs.push("Clarify intake: one place for requests, one rubric to score, one owner to decide.");
+      } else {
+        recs.push("Tighten sequencing: ensure each next build ties to one measurable outcome for the next 60 days.");
+      }
+
+      // Pain-specific targeted
+      switch(pain.value){
+        case 'too-many-ideas':
+          recs.push("Create a kill list: explicitly defer 70% of ideas for 60 days to protect focus.");
+          break;
+        case 'priority-churn':
+          recs.push("Make tradeoffs visible: publish a 1-page decision memo per major priority change.");
+          break;
+        case 'slow-shipping':
+          recs.push("Reduce scope: smaller slices, clearer acceptance criteria, fewer ‘surprise’ edge cases.");
+          break;
+        case 'launch-risk':
+          recs.push("Use a launch readiness checklist: positioning, enablement, tracking, and rollback plan.");
+          break;
+        case 'customer-signal':
+          recs.push("Standardize discovery: consistent script + tagging; turn notes into decisions weekly.");
+          break;
+      }
+
+      // Keep to top 4
+      return recs.slice(0,4);
+    }
+
+    function formatResults(){
+      const segment = inferSegment(teamSize.value);
+      const risk = scoreRisk();
+      const recs = topRecommendations(segment, risk);
+
+      const now = new Date();
+      const stamp = now.toLocaleString();
+
+      const oneLine = (notes.value || "").trim() || "(none provided)";
+
+      let txt = "";
+      txt += "JP Consulting — Product Clarity Scan\n";
+      txt += "Timestamp: " + stamp + "\n\n";
+
+      txt += "Inputs\n";
+      txt += "- Team size: " + teamSize.value + "\n";
+      txt += "- Stage: " + stage.value + "\n";
+      txt += "- Bottleneck: " + pain.options[pain.selectedIndex].text + "\n";
+      txt += "- Primary goal: " + goal.options[goal.selectedIndex].text + "\n";
+      txt += "- Shipping cadence: " + cadence.options[cadence.selectedIndex].text + "\n";
+      txt += "- Prioritization owner: " + ownership.options[ownership.selectedIndex].text + "\n";
+      txt += "- Stuck decision: " + oneLine + "\n\n";
+
+      txt += "Scan Output\n";
+      txt += "- Segment: " + segment + "\n";
+      txt += "- Clarity/Execution Risk (0–10): " + risk + "\n\n";
+
+      txt += "Recommended next actions (next 14 days)\n";
+      recs.forEach((r, i) => { txt += (i+1) + ") " + r + "\n"; });
+
+      txt += "\nIf you want help, reply with your Jira/Linear/Notion link (or paste top 10 items) and I’ll suggest a 30-day plan.\n";
+      return txt;
+    }
+
+    function enableActions(resultStr){
+      copyBtn.disabled = false;
+      emailBtn.setAttribute('aria-disabled','false');
+
+      const subject = encodeURIComponent("Product Clarity Scan Results");
+      const body = encodeURIComponent(resultStr);
+
+      // mailto with subject/body
+      emailBtn.href = `mailto:${YOUR_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    runBtn.addEventListener('click', () => {
+      const resultStr = formatResults();
+      resultsText.textContent = resultStr;
+      resultsBox.style.display = 'block';
+      enableActions(resultStr);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const text = resultsText.textContent || "";
+      try{
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = "Copied ✓";
+        setTimeout(() => copyBtn.textContent = "Copy results", 1200);
+      }catch(e){
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.textContent = "Copied ✓";
+        setTimeout(() => copyBtn.textContent = "Copy results", 1200);
+      }
+    });
+
+    // Disable Email button until scan runs
+    emailBtn.addEventListener('click', (e) => {
+      if (copyBtn.disabled){
+        e.preventDefault();
+      }
+    });
+  })();
+</script>
+
+
+  
 </body>
 </html>
