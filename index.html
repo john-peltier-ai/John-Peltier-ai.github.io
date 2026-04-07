@@ -576,8 +576,8 @@ footer .f-brand span { color: var(--accent); }
 
 /* RESPONSIVE */
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 48px; }
-  .hero-right { max-width: 320px; margin: 0 auto; }
+  .hero { grid-template-columns: 1fr; gap: 0; padding: 52px 24px 44px; }
+  .hero-right { display: none; }
   .notify-inner { flex-direction: column; align-items: flex-start; }
   .notify-form { width: 100%; }
   .notify-form input { flex: 1; width: auto; }
@@ -589,6 +589,9 @@ footer .f-brand span { color: var(--accent); }
   .section { padding: 56px 24px; }
   .notify-strip { padding: 32px 24px; }
   footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+  .hero-left h1 { font-size: clamp(44px, 13vw, 64px); }
+  .hero-left .sub { font-size: 16px; }
+  .hero-cta { display: none; }
 }
 </style>
 </head>
@@ -611,7 +614,7 @@ footer .f-brand span { color: var(--accent); }
     <h1>AI for<br><em>Regular</em><br>People.</h1>
     <p class="sub">Plain-English guides to using AI in your daily work and business — written by someone who spent years building software products, then stepped away to run a small business. No hype. No tech degree required.</p>
     <p class="hero-byline"><strong>John Peltier</strong> &nbsp;·&nbsp; SaaS Product Manager → Franchise Owner → AI Consultant</p>
-    <a href="#guide" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--accent);color:#0b0d0f;font-family:'Epilogue',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;">
+    <a href="#guide" class="hero-cta" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--accent);color:#0b0d0f;font-family:'Epilogue',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;">
       Get Notified When It Drops &nbsp;↓
     </a>
   </div>
@@ -802,14 +805,14 @@ footer .f-brand span { color: var(--accent); }
   <div class="f-links">
     <a href="#guide">Get Notified</a>
     <a href="#books">Books</a>
-    <a href="mailto:johnpeltier+ai@gmail.com">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#315b5e595f41545d455854431a505871565c50585d1f525e5c">Contact</a>
   </div>
 </footer>
 <div style="text-align:center; padding: 14px 40px 20px; border-top: 1px solid rgba(255,255,255,0.04);">
-  <span style="font-size:11px; color:var(--muted); letter-spacing:0.08em;">AI workflow consulting for small businesses &nbsp;·&nbsp; <a href="https://rhinomedical.ai" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom:1px; transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Rhino Digital AI</a></span>
+  <span style="font-size:11px; color:var(--muted); letter-spacing:0.08em;">AI workflow consulting for small businesses &nbsp;·&nbsp; <a href="https://rhinodigitalai.com" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom:1px; transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Rhino Digital AI</a></span>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
@@ -831,9 +834,4 @@ function handleNotify() {
 document.querySelector('a[href="#guide"]')?.addEventListener('mouseenter', function() {
   this.style.background = '#f0c85a';
 });
-document.querySelector('a[href="#guide"]')?.addEventListener('mouseleave', function() {
-  this.style.background = 'var(--accent)';
-});
-</script>
-</body>
-</html>
+docum
