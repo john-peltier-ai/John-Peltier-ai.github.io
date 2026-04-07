@@ -1,622 +1,836 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="Fractional product execution for early-stage SaaS founders. Prioritization, backlog grooming, roadmap planning, and launch readiness." />
-<title>JP Consulting | Fractional Product Execution for Founders</title>
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>John Peltier — AI for Regular People</title>
+<meta name="description" content="Plain-English guides to AI — for people who run businesses, not people who build them. Free guide coming soon."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{
---bg:#0b1220;
---panel:#0f1b33;
---panel2:#0d1730;
---text:#e9eefc;
---muted:#b8c2e6;
---line:rgba(255,255,255,.12);
---accent:#7aa2ff;
---accent2:#68f0c4;
---shadow: 0 18px 40px rgba(0,0,0,.35);
---radius: 18px;
---max: 1100px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;
-font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-background:
-radial-gradient(1200px 800px at 15% -10%, rgba(122,162,255,.18), transparent 60%),
-radial-gradient(900px 700px at 95% 0%, rgba(104,240,196,.14), transparent 55%),
-radial-gradient(900px 700px at 40% 110%, rgba(122,162,255,.10), transparent 55%),
-var(--bg);
-color:var(--text);
-line-height:1.5;
-}
-a{color:inherit}
-.wrap{max-width:var(--max); margin:0 auto; padding: 22px 18px 70px;}
-.nav{
-display:flex; align-items:center; justify-content:space-between;
-gap:12px; padding:14px 0 10px;
-}
-.brand{
-display:flex; align-items:center; gap:12px; text-decoration:none;
-}
-.logo{
-width:38px; height:38px; border-radius:14px;
-background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(104,240,196,.9));
-box-shadow: 0 12px 24px rgba(0,0,0,.25);
-}
-.brand b{font-size:16px; letter-spacing:.2px}
-.brand span{display:block; font-size:12px; color:var(--muted)}
-.navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-.navlinks a{
-text-decoration:none; font-size:13px; color:var(--muted);
-padding:8px 10px; border-radius:999px; border:1px solid transparent;
-}
-.navlinks a:hover{border-color:var(--line); color:var(--text); background:rgba(255,255,255,.04)}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.hero{
-margin-top:18px;
-border:1px solid var(--line);
-border-radius: calc(var(--radius) + 6px);
-background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-box-shadow: var(--shadow);
-overflow:hidden;
-position:relative;
-}
-.hero::before{
-content:"";
-position:absolute; inset:-2px;
-background: radial-gradient(700px 280px at 20% 20%, rgba(104,240,196,.12), transparent 60%),
-radial-gradient(900px 320px at 80% 10%, rgba(122,162,255,.14), transparent 60%);
-pointer-events:none;
-}
-.hero-inner{position:relative; padding:44px 26px}
-.hero h1{
-margin:0;
-font-size: 38px;
-line-height: 1.08;
-letter-spacing: -.4px;
-}
-.hero p{
-margin:14px 0 0;
-max-width: 820px;
-color: var(--muted);
-font-size: 16px;
-}
-.actions{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
-.btn{
-display:inline-flex; align-items:center; justify-content:center;
-gap:10px;
-padding: 11px 14px;
-border-radius: 999px;
-border: 1px solid var(--line);
-background: rgba(255,255,255,.04);
-color: var(--text);
-text-decoration:none;
-font-weight: 600;
-font-size: 13px;
-}
-.btn.primary{
-border-color: transparent;
-background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(104,240,196,.9));
-color: #08131f;
-box-shadow: 0 14px 28px rgba(0,0,0,.22);
-}
-.btn:hover{transform: translateY(-1px)}
-.btn:active{transform: translateY(0px)}
-
-.section{margin-top:36px}
-.section h2{
-margin:0;
-font-size: 22px;
-letter-spacing: -.2px;
-}
-.sub{
-margin:8px 0 18px;
-color: var(--muted);
-max-width: 820px;
-font-size: 14px;
+:root {
+  --bg: #0b0d0f;
+  --surface: #111417;
+  --surface2: #181c20;
+  --text: #edeae4;
+  --muted: #7e8490;
+  --accent: #e8b84b;
+  --accent2: #c94e1a;
+  --rule: rgba(255,255,255,0.07);
+  --max: 1060px;
 }
 
-.grid{
-display:grid;
-grid-template-columns: repeat(12, 1fr);
-gap: 14px;
-}
-.card{
-grid-column: span 6;
-border:1px solid var(--line);
-border-radius: var(--radius);
-background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-padding: 16px;
-}
-.card h3{margin:0; font-size: 15px}
-.card p{margin:8px 0 0; color: var(--muted); font-size: 13px}
+html { scroll-behavior: smooth; }
 
-.how{
-display:grid;
-grid-template-columns: repeat(12, 1fr);
-gap: 14px;
-}
-.step{
-grid-column: span 4;
-border:1px solid var(--line);
-border-radius: var(--radius);
-background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-padding: 16px;
-}
-.step b{display:block; font-size:13px}
-.step span{display:block; margin-top:8px; color: var(--muted); font-size: 13px}
-
-.cta{
-margin-top: 34px;
-border:1px solid var(--line);
-border-radius: calc(var(--radius) + 6px);
-background: radial-gradient(900px 420px at 30% 0%, rgba(122,162,255,.16), transparent 60%),
-radial-gradient(800px 420px at 80% 20%, rgba(104,240,196,.12), transparent 60%),
-linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012));
-box-shadow: var(--shadow);
-padding: 26px;
-}
-.cta h2{margin:0; font-size: 22px}
-.cta p{margin:10px 0 0; color: var(--muted); font-size: 14px; max-width: 820px}
-.footer{
-margin-top: 44px;
-color: var(--muted);
-font-size: 12px;
-display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-opacity:.9;
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
 }
 
-@media (max-width: 760px){
-.card{grid-column: span 12}
-.step{grid-column: span 12}
-.hero h1{font-size: 32px}
+/* GRAIN */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
 }
 
- /* --- Clarity Scan (add-on) --- */
-  .scan-wrap{ margin-top: 22px; border:1px solid var(--line); border-radius: calc(var(--radius) + 6px);
-    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-    box-shadow: var(--shadow); padding: 18px; }
-  .scan-grid{ display:grid; grid-template-columns: repeat(12,1fr); gap: 12px; margin-top: 12px; }
-  .scan-field{ grid-column: span 6; }
-  .scan-field label{ display:block; font-size:12px; color: var(--muted); margin: 0 0 6px; }
-  .scan-field select, .scan-field input, .scan-field textarea{
-    width:100%; padding: 10px 11px; border-radius: 12px;
-    border:1px solid var(--line); background: rgba(255,255,255,.03);
-    color: var(--text); outline:none;
-  }
-  .scan-field textarea{ min-height: 92px; resize: vertical; }
-  .scan-field.full{ grid-column: span 12; }
-  .scan-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-  .scan-results{ margin-top: 14px; border:1px dashed var(--line); border-radius: var(--radius);
-    padding: 12px; background: rgba(0,0,0,.12); }
-  .scan-results pre{
-    margin:0; white-space:pre-wrap; word-break:break-word;
-    font-size: 12.5px; color: var(--text);
-  }
-  .hint{ color: var(--muted); font-size:12px; margin-top: 8px; }
-  @media (max-width: 760px){ .scan-field{ grid-column: span 12; } }
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0;
+  background: rgba(11,13,15,0.92);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ── HERO ── */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 100px 40px 80px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-left {}
+
+.eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: up 0.6s 0.1s forwards;
+}
+
+.hero-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 78px);
+  line-height: 1.03;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+  opacity: 0;
+  animation: up 0.7s 0.2s forwards;
+}
+.hero-left h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero-left .sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 300;
+  opacity: 0;
+  animation: up 0.7s 0.32s forwards;
+}
+
+.hero-byline {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: up 0.6s 0.42s forwards;
+}
+.hero-byline strong { color: rgba(255,255,255,0.55); font-weight: 500; }
+
+/* BOOK MOCKUP */
+.hero-right {
+  position: relative;
+  opacity: 0;
+  animation: up 0.9s 0.5s forwards;
+}
+.book-stack {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.85;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.book {
+  position: absolute;
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: -4px 4px 20px rgba(0,0,0,0.7), inset -2px 0 6px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 24px;
+  transition: transform 0.4s ease;
+}
+.book:hover { transform: translateY(-6px) rotate(0deg) !important; }
+
+.book-1 {
+  width: 72%; height: 86%;
+  background: linear-gradient(145deg, #1e2a1a 0%, #111a0e 100%);
+  border-left: 6px solid #2a3d22;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  z-index: 3;
+}
+.book-2 {
+  width: 68%; height: 80%;
+  background: linear-gradient(145deg, #1a1e2a 0%, #0e1118 100%);
+  border-left: 6px solid #22283d;
+  bottom: 12px; left: 48%; transform: translateX(-44%) rotate(-4deg);
+  z-index: 2;
+}
+.book-3 {
+  width: 65%; height: 74%;
+  background: linear-gradient(145deg, #2a1a0e 0%, #180e08 100%);
+  border-left: 6px solid #3d2212;
+  bottom: 20px; left: 52%; transform: translateX(-58%) rotate(5deg);
+  z-index: 1;
+}
+
+.book-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  font-weight: 500;
+}
+.book-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgba(255,255,255,0.9);
+}
+.book-title em { font-style: italic; color: var(--accent); }
+.book-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.4;
+  margin-top: 6px;
+}
+.book-author {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+.book-num {
+  position: absolute;
+  top: 18px; right: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 700;
+  opacity: 0.07;
+  line-height: 1;
+}
+
+.coming-soon-badge {
+  position: absolute;
+  top: -14px; right: -14px;
+  background: var(--accent);
+  color: #0b0d0f;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 5px 10px;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(232,184,75,0.35);
+}
+
+/* ── NOTIFY STRIP ── */
+.notify-strip {
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 40px;
+  opacity: 0;
+  animation: up 0.7s 0.8s forwards;
+}
+.notify-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.notify-text {}
+.notify-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.notify-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.notify-text p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.notify-form {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+.notify-form input {
+  width: 260px;
+  padding: 13px 18px;
+  background: var(--bg);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-right: none;
+  color: var(--text);
+  font-family: 'Epilogue', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.notify-form input::placeholder { color: var(--muted); }
+.notify-form input:focus { border-color: var(--accent); }
+.notify-btn {
+  padding: 13px 22px;
+  background: var(--accent);
+  color: #0b0d0f;
+  border: none;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+}
+.notify-btn:hover { background: #f0c85a; transform: translateY(-1px); }
+.notify-fine {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* ── WHAT TO EXPECT ── */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 44px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+}
+.section-head .sh-label {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* TEASER CARDS */
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 56px;
+}
+.teaser-card {
+  background: var(--surface);
+  padding: 36px 30px;
+  position: relative;
+  transition: background 0.2s;
+}
+.teaser-card:hover { background: var(--surface2); }
+.t-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  position: absolute;
+  top: 16px; right: 20px;
+}
+.t-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: block;
+}
+.t-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 9px;
+  line-height: 1.3;
+  color: var(--text);
+}
+.t-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* BOOK SERIES TEASER */
+.series-block {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.series-block::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(232,184,75,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.series-label {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.series-block h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+.series-block h2 em { font-style: italic; color: var(--accent); }
+.series-block p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.series-books {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.series-book {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  transition: border-color 0.2s;
+}
+.series-book:hover { border-color: rgba(232,184,75,0.3); }
+.sb-spine {
+  width: 8px;
+  height: 52px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.sb-spine-1 { background: linear-gradient(180deg, #2a6147, #1a3d2e); }
+.sb-spine-2 { background: linear-gradient(180deg, #2a3d6e, #1a253d); }
+.sb-spine-3 { background: linear-gradient(180deg, #6e3d2a, #3d1a10); }
+.sb-spine-4 { background: linear-gradient(180deg, #3d2a6e, #1a103d); opacity: 0.4; }
+.sb-info {}
+.sb-vol {
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.sb-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+.sb-status {
+  margin-left: auto;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.sb-status.soon { color: var(--accent); border-color: rgba(232,184,75,0.3); }
+.sb-status.planned { color: var(--muted); border-color: var(--rule); opacity: 0.6; }
+
+/* WHO */
+.who-block {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.who-main {
+  background: var(--surface);
+  padding: 48px 44px;
+}
+.who-main h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.who-main p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 14px;
+  max-width: 520px;
+}
+.who-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.who-tag {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-weight: 500;
+}
+.who-stat-col {
+  background: var(--bg);
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 36px;
+}
+.who-stat {}
+.who-stat .n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+.who-stat .l {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+footer .f-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--text);
+  font-weight: 600;
+}
+footer .f-brand span { color: var(--accent); }
+.f-links { display: flex; gap: 20px; }
+.f-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.f-links a:hover { color: var(--text); }
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.on { opacity: 1; transform: translateY(0); }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 48px; }
+  .hero-right { max-width: 320px; margin: 0 auto; }
+  .notify-inner { flex-direction: column; align-items: flex-start; }
+  .notify-form { width: 100%; }
+  .notify-form input { flex: 1; width: auto; }
+  .teaser-grid { grid-template-columns: 1fr; }
+  .series-block { grid-template-columns: 1fr; gap: 36px; padding: 36px 24px; }
+  .who-block { grid-template-columns: 1fr; }
+  .who-stat-col { flex-direction: row; flex-wrap: wrap; padding: 28px 24px; gap: 24px; }
+  nav { padding: 18px 24px; }
+  .section { padding: 56px 24px; }
+  .notify-strip { padding: 32px 24px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+}
 </style>
 </head>
-
 <body>
-<div class="wrap">
-<div class="nav">
-<a class="brand" href="#top" aria-label="JP Consulting Home">
-<div class="logo" aria-hidden="true"></div>
-<div>
-<b>JP Consulting</b>
-<span>Fractional Product Execution</span>
-</div>
-</a>
 
-<div class="navlinks">
-<a href="#services">Services</a>
-<a href="#how">How it works</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">John Peltier<span>.</span></div>
+  <div class="nav-links">
+    <a href="#guide">Free Guide</a>
+    <a href="#books">Books</a>
+    <a href="#about">About</a>
+  </div>
+</nav>
 
-<!-- ====== HERO (REPLACE YOUR CURRENT HERO SECTION WITH THIS) ====== -->
-<section id="top" class="hero">
-  <div class="hero-inner">
-    <h1>
-      Product clarity<br/>
-      that scales with your startup.
-    </h1>
-    <p>
-      For early teams (1–25), I help you decide what matters now—so you stop building “good ideas” that don’t move outcomes.
-      For growing teams (30+), I bring lightweight structure to align stakeholders and keep delivery steady as complexity rises.
-    </p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Coming Soon — Free Guide + Book Series</div>
+    <h1>AI for<br><em>Regular</em><br>People.</h1>
+    <p class="sub">Plain-English guides to using AI in your daily work and business — written by someone who spent years building software products, then stepped away to run a small business. No hype. No tech degree required.</p>
+    <p class="hero-byline"><strong>John Peltier</strong> &nbsp;·&nbsp; SaaS Product Manager → Franchise Owner → AI Consultant</p>
+    <a href="#guide" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--accent);color:#0b0d0f;font-family:'Epilogue',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;">
+      Get Notified When It Drops &nbsp;↓
+    </a>
+  </div>
 
-    <div class="actions">
-      <a class="btn primary" href="https://calendly.com/YOUR-LINK-HERE">Book a short intro call</a>
-      <a class="btn" href="#services">See services</a>
-      <a class="btn" href="mailto:johnpeltier@gmail.com">Email</a>
+  <div class="hero-right">
+    <div class="book-stack">
+      <!-- Book 3 (back) -->
+      <div class="book book-3">
+        <div class="book-num">3</div>
+        <div>
+          <div class="book-label">Volume 3</div>
+          <div class="book-title">AI for Your <em>Business</em></div>
+        </div>
+        <div class="book-author">John Peltier</div>
+      </div>
+      <!-- Book 2 (middle) -->
+      <div class="book book-2">
+        <div class="book-num">2</div>
+        <div>
+          <div class="book-label">Volume 2</div>
+          <div class="book-title">AI for Your <em>Work</em></div>
+        </div>
+        <div class="book-author">John Peltier</div>
+      </div>
+      <!-- Book 1 (front) -->
+      <div class="book book-1">
+        <div class="coming-soon-badge">Free First</div>
+        <div class="book-num">1</div>
+        <div>
+          <div class="book-label">Volume 1</div>
+          <div class="book-title">AI for <em>Regular</em> People</div>
+          <div class="book-sub">Your First 5 Practical Moves</div>
+        </div>
+        <div class="book-author">John Peltier</div>
+      </div>
     </div>
   </div>
 </section>
 
-
-<section id="services" class="section">
-<h2>What I do</h2>
-<p class="sub">No buzzwords. Lightweight structure that forces decisions and keeps delivery moving.</p>
-
-<div class="grid">
-<div class="card">
-<h3>Prioritization Workshop</h3>
-<p>Cut noise, align stakeholders, and lock the next 30–60 day execution plan with clear tradeoffs.</p>
-</div>
-
-<div class="card">
-<h3>Weekly Backlog Grooming</h3>
-<p>Turn messy ideas into build-ready tickets with acceptance criteria engineers can ship against.</p>
-</div>
-
-<div class="card">
-<h3>Roadmap & Milestone Planning</h3>
-<p>Practical “now / next / later” planning tied to outcomes — not vanity timelines.</p>
-</div>
-
-<div class="card">
-<h3>Go-to-Market Support</h3>
-<p>Launch readiness, positioning clarity, internal enablement, and release execution support.</p>
-</div>
-
-<div class="card">
-<h3>Fractional Product Lead</h3>
-<p>Embedded product leadership: cadence, decision ownership, and weekly shipping rhythm.</p>
-</div>
-
-<div class="card">
-<h3>Customer Development</h3>
-<p>Interview plan → signal extraction → decision inputs. Less anecdotes, more actionable insight.</p>
-</div>
-</div>
-</section>
-
-  <!-- ====== OPTIONAL: ADD THIS “WHO IT’S FOR” SECTION AFTER SERVICES (RECOMMENDED) ====== -->
-<section id="fit" class="section">
-  <h2>Built for two common startup stages</h2>
-  <p class="sub">
-    Different stage. Same problem: too many decisions, not enough clarity. I help in either situation.
-  </p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Early teams (1–25)</h3>
-      <p><b>Aligned vision, unclear sequencing.</b> Too many good ideas, not enough confidence on what matters right now.</p>
-      <p style="margin-top:10px">
-        <span style="color:var(--muted); font-size:13px">I help you:</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Filter ideas against revenue, retention, and risk</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Cut scope, define “done,” and ship weekly</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Avoid early product debt</span>
-      </p>
+<!-- NOTIFY STRIP -->
+<div class="notify-strip" id="guide">
+  <div class="notify-inner">
+    <div class="notify-text">
+      <div class="notify-label">Free — Volume 1</div>
+      <h3>Be first to get the guide when it drops.</h3>
+      <p>No spam. Just the guide, then occasional plain-English AI insights.</p>
     </div>
+    <div>
+      <div class="notify-form">
+        <input type="email" placeholder="your@email.com" id="emailInput"/>
+        <button class="notify-btn" onclick="handleNotify()">Email Me When It Drops</button>
+      </div>
+      <p class="notify-fine">Opens your email app. Just hit Send.</p>
+    </div>
+  </div>
+</div>
 
-    <div class="card">
-      <h3>Growing teams (30+)</h3>
-      <p><b>Shipping momentum, alignment cracks.</b> Roadmap debates, priority churn, and cross-functional friction.</p>
-      <p style="margin-top:10px">
-        <span style="color:var(--muted); font-size:13px">I help you:</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Introduce lightweight prioritization and cadence</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Make tradeoffs explicit and decisions visible</span><br/>
-        <span style="color:var(--muted); font-size:13px">• Restore a consistent delivery rhythm</span>
-      </p>
+<!-- WHAT'S INSIDE -->
+<section class="section">
+  <div class="section-head reveal">
+    <span class="sh-label">Inside the Free Guide</span>
+    <h2>What you'll actually walk away with</h2>
+  </div>
+
+  <div class="teaser-grid reveal">
+    <div class="teaser-card">
+      <span class="t-num">01</span>
+      <span class="t-icon">⚡</span>
+      <div class="t-title">A 10-Minute Test Drive You Can Do Today</div>
+      <div class="t-desc">One thing to try right now. No setup, no account, no tech background. Just open a browser.</div>
+    </div>
+    <div class="teaser-card">
+      <span class="t-num">02</span>
+      <span class="t-icon">🎯</span>
+      <div class="t-title">What AI Is Actually Good At (and What It's Not)</div>
+      <div class="t-desc">The honest breakdown — so you don't waste time on things AI handles poorly and miss the ones it handles brilliantly.</div>
+    </div>
+    <div class="teaser-card">
+      <span class="t-num">03</span>
+      <span class="t-icon">💬</span>
+      <div class="t-title">The "Good Enough" Prompt</div>
+      <div class="t-desc">One simple structure that covers 80% of what you'll ever need to ask. No prompt engineering required.</div>
+    </div>
+    <div class="teaser-card">
+      <span class="t-num">04</span>
+      <span class="t-icon">📋</span>
+      <div class="t-title">5 Tasks to Hand Off This Week</div>
+      <div class="t-desc">Emails you dread. Research rabbit holes. Summaries. Responses. These are already off my plate — now off yours too.</div>
+    </div>
+    <div class="teaser-card">
+      <span class="t-num">05</span>
+      <span class="t-icon">✅</span>
+      <div class="t-title">The "Should I Use AI?" Checklist</div>
+      <div class="t-desc">A 10-second decision filter. Know instantly whether AI will speed you up or just get in the way.</div>
+    </div>
+    <div class="teaser-card">
+      <span class="t-num">+</span>
+      <span class="t-icon">🛑</span>
+      <div class="t-title">The Honest Caution Section</div>
+      <div class="t-desc">What you should never rely on AI for. Short, important, and something most AI guides conveniently skip.</div>
     </div>
   </div>
 </section>
 
-
-<section id="how" class="section">
-<h2>How it works</h2>
-<p class="sub">Simple cadence. Visible progress. Minimal overhead.</p>
-
-<div class="how">
-<div class="step">
-<b>1) Short diagnostic</b>
-<span>Stage, bottlenecks, and where delivery is stalling (or revenue is at risk).</span>
-</div>
-<div class="step">
-<b>2) Execution plan</b>
-<span>Priorities, weekly cadence, and what “done” means for the next push.</span>
-</div>
-<div class="step">
-<b>3) Ship weekly</b>
-<span>Requirements, grooming, stakeholder alignment, and clear next decisions.</span>
-</div>
-</div>
-</section>
-
-<section id="scan" class="section">
-  <h2>60-second Product Clarity Scan</h2>
-  <p class="sub">
-    No accounts. No uploads. Runs in your browser. Answer a few questions and get a clear “what to do next” summary.
-  </p>
-
-  <div class="scan-wrap">
-    <div class="scan-grid">
-      <div class="scan-field">
-        <label for="teamSize">Team size</label>
-        <select id="teamSize">
-          <option value="1-5">1–5</option>
-          <option value="6-15">6–15</option>
-          <option value="16-25">16–25</option>
-          <option value="26-40">26–40</option>
-          <option value="41-80">41–80</option>
-          <option value="80+">80+</option>
-        </select>
-      </div>
-
-      <div class="scan-field">
-        <label for="stage">Company stage</label>
-        <select id="stage">
-          <option value="pre-revenue">Pre-revenue</option>
-          <option value="early-revenue">Early revenue</option>
-          <option value="scaling">Scaling (repeatable GTM)</option>
-        </select>
-      </div>
-
-      <div class="scan-field">
-        <label for="pain">What’s your biggest bottleneck right now?</label>
-        <select id="pain">
-          <option value="too-many-ideas">Too many ideas / unsure what matters now</option>
-          <option value="priority-churn">Priority churn / roadmap debates</option>
-          <option value="slow-shipping">Slow shipping / unclear requirements</option>
-          <option value="launch-risk">Launch risk / GTM not ready</option>
-          <option value="customer-signal">Customer signal is messy / anecdotal</option>
-        </select>
-      </div>
-
-      <div class="scan-field">
-        <label for="goal">Primary goal for the next 60 days</label>
-        <select id="goal">
-          <option value="new-revenue">New revenue / pipeline conversion</option>
-          <option value="retention">Retention / activation / onboarding</option>
-          <option value="reliability">Reliability / risk reduction</option>
-          <option value="speed">Shipping velocity / throughput</option>
-          <option value="positioning">Positioning / messaging / GTM clarity</option>
-        </select>
-      </div>
-
-      <div class="scan-field">
-        <label for="cadence">Do you have a consistent shipping cadence?</label>
-        <select id="cadence">
-          <option value="weekly">Yes — at least weekly</option>
-          <option value="sometimes">Sometimes / inconsistent</option>
-          <option value="rarely">Rarely</option>
-        </select>
-      </div>
-
-      <div class="scan-field">
-        <label for="ownership">Who owns prioritization today?</label>
-        <select id="ownership">
-          <option value="founder">Founder</option>
-          <option value="pm">PM</option>
-          <option value="eng">Engineering lead</option>
-          <option value="committee">Committee / “everyone”</option>
-          <option value="unclear">Unclear</option>
-        </select>
-      </div>
-
-      <div class="scan-field full">
-        <label for="notes">One sentence: what decision are you stuck on?</label>
-        <textarea id="notes" placeholder="Example: We can’t decide whether to build SSO, SOC2 automation, or the next feature customers keep asking for."></textarea>
-      </div>
+<!-- BOOK SERIES TEASER -->
+<section class="section" style="padding-top:0;" id="books">
+  <div class="series-block reveal">
+    <div>
+      <div class="series-label">The Full Series</div>
+      <h2>A plain-English<br>library for the<br><em>non-technical</em> person.</h2>
+      <p>Volume 1 is the on-ramp. The series builds from there — how to use AI at work, how to deploy it in a small business, and how to stay ahead without becoming a tech person.</p>
+      <p>Each book is short, practical, and written for the person actually running things — not the person building the software.</p>
     </div>
-
-    <div class="scan-actions">
-      <button class="btn primary" type="button" id="runScanBtn">Run scan</button>
-      <button class="btn" type="button" id="copyBtn" disabled>Copy results</button>
-      <a class="btn" id="emailBtn" href="#" aria-disabled="true">Email results</a>
-    </div>
-
-    <div class="hint">Tip: “Email results” (requires Run Scan) opens your mail app with the scan filled in. “Copy results” puts it on your clipboard.</div>
-
-    <div class="scan-results" id="resultsBox" style="display:none;">
-      <pre id="resultsText"></pre>
+    <div class="series-books">
+      <div class="series-book">
+        <div class="sb-spine sb-spine-1"></div>
+        <div class="sb-info">
+          <div class="sb-vol">Volume 1</div>
+          <div class="sb-title">AI for Regular People: Your First 5 Practical Moves</div>
+        </div>
+        <span class="sb-status soon">Free</span>
+      </div>
+      <div class="series-book">
+        <div class="sb-spine sb-spine-2"></div>
+        <div class="sb-info">
+          <div class="sb-vol">Volume 2</div>
+          <div class="sb-title">AI for Your Work: Save an Hour a Day Without Learning to Code</div>
+        </div>
+        <span class="sb-status soon">Coming Soon</span>
+      </div>
+      <div class="series-book">
+        <div class="sb-spine sb-spine-3"></div>
+        <div class="sb-info">
+          <div class="sb-vol">Volume 3</div>
+          <div class="sb-title">AI for Your Business: Automate the Tasks That Are Costing You Money</div>
+        </div>
+        <span class="sb-status planned">Planned</span>
+      </div>
+      <div class="series-book" style="opacity:0.45;">
+        <div class="sb-spine sb-spine-4"></div>
+        <div class="sb-info">
+          <div class="sb-vol">Volume 4</div>
+          <div class="sb-title">More in the series...</div>
+        </div>
+        <span class="sb-status planned">TBD</span>
+      </div>
     </div>
   </div>
 </section>
 
-  
-<section id="contact" class="cta">
-<h2>Start with a short conversation</h2>
-<p>
-If you’re shipping slowly, debating priorities, or approaching a launch,
-a quick intro call is the fastest way to see if this fits.
-</p>
-<div class="actions" style="margin-top:14px">
-<!--<a class="btn primary" href="https://calendly.com/YOUR-LINK-HERE">Book a short intro call</a>-->
-<a class="btn" href="mailto:johnpeltier@gmail.com">Email to get started</a>
-</div>
+<!-- WHO I AM -->
+<section class="section" id="about" style="padding-top:0;">
+  <div class="who-block reveal">
+    <div class="who-main">
+      <h3>Why I'm the right person to write this.</h3>
+      <p>I spent years as a SaaS product manager — sitting between engineers and real users, translating complicated software into something people could actually use. I fought for the non-technical person in every product meeting.</p>
+      <p>Then I stepped away from tech entirely and ran a drywall and paint repair franchise in New Orleans for four years. Scheduling jobs. Managing 1099 crews. Answering phones while covered in dust. I know what it's like to run a business without a tech team.</p>
+      <p>Now I help small businesses and medical practices implement AI workflows that actually work. This series is the plain-English version of everything I've learned — written for the person running the show, not building the software.</p>
+      <div class="who-tags">
+        <span class="who-tag">SaaS Product Management</span>
+        <span class="who-tag">Franchise Ownership</span>
+        <span class="who-tag">AI Consulting</span>
+        <span class="who-tag">New Orleans, LA</span>
+        <span class="who-tag">No Jargon</span>
+      </div>
+    </div>
+    <div class="who-stat-col">
+      <div class="who-stat">
+        <div class="n">4+</div>
+        <div class="l">Years running a small business before returning to tech</div>
+      </div>
+      <div class="who-stat">
+        <div class="n">0</div>
+        <div class="l">Tech skills required to use this guide</div>
+      </div>
+      <div class="who-stat">
+        <div class="n">Free</div>
+        <div class="l">Volume 1 — always</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="footer">
-<div>© 2026 JP Consulting</div>
-<div>Remote-friendly • US-based • Founder-first execution</div>
-</div>
-</div>
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">John Peltier<span>.</span></div>
+  <div style="font-size:12px; color:var(--muted);">AI for Regular People &nbsp;·&nbsp; New Orleans, LA</div>
+  <div class="f-links">
+    <a href="#guide">Get Notified</a>
+    <a href="#books">Books</a>
+    <a href="/cdn-cgi/l/email-protection#fa909592948a9f968e939f88d19b93ba9d979b9396d4999597">Contact</a>
+  </div>
+</footer>
 
-  <script>
-  (function(){
-    const el = (id) => document.getElementById(id);
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    const teamSize = el('teamSize');
-    const stage = el('stage');
-    const pain = el('pain');
-    const goal = el('goal');
-    const cadence = el('cadence');
-    const ownership = el('ownership');
-    const notes = el('notes');
+// Notify form
+function handleNotify() {
+  const input = document.getElementById('emailInput');
+  if (input.value && input.value.includes('@')) {
+    window.location.href = `mailto:johnpeltier+ai@gmail.com?subject=Notify Me: AI for Regular People&body=Please add me to the list: ${input.value}`;
+  } else {
+    input.style.borderColor = 'var(--accent2)';
+    input.focus();
+  }
+}
 
-    const runBtn = el('runScanBtn');
-    const copyBtn = el('copyBtn');
-    const emailBtn = el('emailBtn');
-
-    const resultsBox = el('resultsBox');
-    const resultsText = el('resultsText');
-
-    const YOUR_EMAIL = "youremail@example.com"; // <-- CHANGE THIS
-
-    function inferSegment(teamSizeVal){
-      // Rough segmentation: 1–25 vs 30+ (with a soft bridge range)
-      if (teamSizeVal === '1-5' || teamSizeVal === '6-15' || teamSizeVal === '16-25') return '1–25 headcount (Founder-aligned, execution-unclear)';
-      if (teamSizeVal === '26-40') return '30+ headcount (Growing team; alignment risk emerging)';
-      return '30+ headcount (Execution-heavy; alignment + prioritization needed)';
-    }
-
-    function scoreRisk(){
-      let risk = 0;
-
-      // Cadence risk
-      if (cadence.value === 'sometimes') risk += 2;
-      if (cadence.value === 'rarely') risk += 4;
-
-      // Ownership risk
-      if (ownership.value === 'committee') risk += 4;
-      if (ownership.value === 'unclear') risk += 3;
-
-      // Pain-driven risk
-      if (pain.value === 'priority-churn') risk += 3;
-      if (pain.value === 'slow-shipping') risk += 2;
-      if (pain.value === 'launch-risk') risk += 2;
-      if (pain.value === 'customer-signal') risk += 1;
-
-      // Stage tweaks
-      if (stage.value === 'scaling') risk += 1;
-
-      return Math.min(10, risk);
-    }
-
-    function topRecommendations(segment, risk){
-      const recs = [];
-
-      // Segment-specific primary
-      if (segment.startsWith('1–25')){
-        recs.push("Run an idea triage: filter the next 10 ideas through revenue / retention / risk + effort, then lock a 30–60 day plan.");
-        recs.push("Define ‘done’ for the next 3 deliverables (acceptance criteria + edge cases) to reduce rework.");
-      } else {
-        recs.push("Establish lightweight prioritization and decision ownership (one owner + explicit tradeoffs).");
-        recs.push("Create a 90-day ‘now / next / later’ roadmap tied to outcomes (not dates) and review weekly.");
-      }
-
-      // Risk-based add-ons
-      if (risk >= 7){
-        recs.push("Fix cadence: weekly grooming + a single weekly decision agenda (what changes, what slips, why).");
-      } else if (risk >= 4){
-        recs.push("Clarify intake: one place for requests, one rubric to score, one owner to decide.");
-      } else {
-        recs.push("Tighten sequencing: ensure each next build ties to one measurable outcome for the next 60 days.");
-      }
-
-      // Pain-specific targeted
-      switch(pain.value){
-        case 'too-many-ideas':
-          recs.push("Create a kill list: explicitly defer 70% of ideas for 60 days to protect focus.");
-          break;
-        case 'priority-churn':
-          recs.push("Make tradeoffs visible: publish a 1-page decision memo per major priority change.");
-          break;
-        case 'slow-shipping':
-          recs.push("Reduce scope: smaller slices, clearer acceptance criteria, fewer ‘surprise’ edge cases.");
-          break;
-        case 'launch-risk':
-          recs.push("Use a launch readiness checklist: positioning, enablement, tracking, and rollback plan.");
-          break;
-        case 'customer-signal':
-          recs.push("Standardize discovery: consistent script + tagging; turn notes into decisions weekly.");
-          break;
-      }
-
-      // Keep to top 4
-      return recs.slice(0,4);
-    }
-
-    function formatResults(){
-      const segment = inferSegment(teamSize.value);
-      const risk = scoreRisk();
-      const recs = topRecommendations(segment, risk);
-
-      const now = new Date();
-      const stamp = now.toLocaleString();
-
-      const oneLine = (notes.value || "").trim() || "(none provided)";
-
-      let txt = "";
-      txt += "JP Consulting — Product Clarity Scan\n";
-      txt += "Timestamp: " + stamp + "\n\n";
-
-      txt += "Inputs\n";
-      txt += "- Team size: " + teamSize.value + "\n";
-      txt += "- Stage: " + stage.value + "\n";
-      txt += "- Bottleneck: " + pain.options[pain.selectedIndex].text + "\n";
-      txt += "- Primary goal: " + goal.options[goal.selectedIndex].text + "\n";
-      txt += "- Shipping cadence: " + cadence.options[cadence.selectedIndex].text + "\n";
-      txt += "- Prioritization owner: " + ownership.options[ownership.selectedIndex].text + "\n";
-      txt += "- Stuck decision: " + oneLine + "\n\n";
-
-      txt += "Scan Output\n";
-      txt += "- Segment: " + segment + "\n";
-      txt += "- Clarity/Execution Risk (0–10): " + risk + "\n\n";
-
-      txt += "Recommended next actions (next 14 days)\n";
-      recs.forEach((r, i) => { txt += (i+1) + ") " + r + "\n"; });
-
-      txt += "\nIf you want help, reply with your Jira/Linear/Notion link (or paste top 10 items) and I’ll suggest a 30-day plan.\n";
-      return txt;
-    }
-
-    function enableActions(resultStr){
-      copyBtn.disabled = false;
-      emailBtn.setAttribute('aria-disabled','false');
-
-      const subject = encodeURIComponent("Product Clarity Scan Results");
-      const body = encodeURIComponent(resultStr);
-
-      // mailto with subject/body
-      emailBtn.href = `mailto:${YOUR_EMAIL}?subject=${subject}&body=${body}`;
-    }
-
-    runBtn.addEventListener('click', () => {
-      const resultStr = formatResults();
-      resultsText.textContent = resultStr;
-      resultsBox.style.display = 'block';
-      enableActions(resultStr);
-    });
-
-    copyBtn.addEventListener('click', async () => {
-      const text = resultsText.textContent || "";
-      try{
-        await navigator.clipboard.writeText(text);
-        copyBtn.textContent = "Copied ✓";
-        setTimeout(() => copyBtn.textContent = "Copy results", 1200);
-      }catch(e){
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        copyBtn.textContent = "Copied ✓";
-        setTimeout(() => copyBtn.textContent = "Copy results", 1200);
-      }
-    });
-
-    // Disable Email button until scan runs
-    emailBtn.addEventListener('click', (e) => {
-      if (copyBtn.disabled){
-        e.preventDefault();
-      }
-    });
-  })();
+// CTA hover
+document.querySelector('a[href="#guide"]')?.addEventListener('mouseenter', function() {
+  this.style.background = '#f0c85a';
+});
+document.querySelector('a[href="#guide"]')?.addEventListener('mouseleave', function() {
+  this.style.background = 'var(--accent)';
+});
 </script>
-
-
-  
 </body>
 </html>
